@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Chat Interface</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* --- Font Import for a cleaner look --- */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+    /* --- CSS Variables for easy theme management --- */
+    :root {
+      --bg-color: #111827;
+      --container-bg: rgba(23, 31, 48, 0.75);
+      --primary-accent: #38bdf8; /* A nice, bright blue */
+      --secondary-accent: #818cf8;
+      --text-primary: #e5e7eb;
+      --text-secondary: #9ca3af;
+      --border-color: rgba(56, 189, 248, 0.2);
+      --shadow-color: rgba(56, 189, 248, 0.1);
+      --border-radius: 16px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* --- Body and Animated Background --- */
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg-color);
+      background: linear-gradient(-45deg, #111827, #1f2937, #111827, #374151);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    
+   /* --- The Main Chat Container --- */
+.chat-environment {
+  width: 100%;
+  max-width: 800px; 
+  min-height: 600px;
+  background: var(--container-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 40px var(--shadow-color);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  /* The 'animation' property has been removed from here. */
+}
+
+    
+
+    /* --- Header Section --- */
+    .header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+    }
+    
+    .header-title {
+      font-size: 2.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .header-title .icon {
+      font-size: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .header-subtitle {
+      color: var(--text-secondary);
+      margin-top: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* --- Response Area --- */
+    .response-area {
+      flex-grow: 1;
+      background: rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      overflow-y: auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+
+    /* NEW: Style for the blinking cursor */
+    .typing-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1.1rem;
+      background-color: var(--primary-accent);
+      animation: blink 1s infinite;
+      margin-left: 3px;
+      vertical-align: text-bottom;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+
+    /* --- Form and Inputs --- */
+    .chat-form {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .chat-input {
+      flex-grow: 1;
+      padding: 1rem 1.25rem;
+      font-size: 1.1rem;
+      background: var(--bg-color);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      color: var(--text-primary);
+      outline: none;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+
+    .chat-input:focus {
+      border-color: var(--primary-accent);
+      box-shadow: 0 0 15px var(--shadow-color);
+    }
+    .send-button {
+      padding: 1rem 2rem;
+      background: linear-gradient(45deg, var(--secondary-accent), var(--primary-accent));
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .send-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+    }
+
+    /* --- Footer --- */
+    footer {
+      margin-top: auto;
+      padding-top: 1.5rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-color);
+    }
+
+  </style>
+</head>
+<body>
+    
+  <div class="chat-environment">
+    <header class="header">
+      <h1 class="header-title">
+        <span class="icon">🤖</span>
+        <span>AI Assistant</span>
+      </h1>
+      <p class="header-subtitle">Your intelligent conversation partner</p>
+    </header>
+  
+    <div class="response-area">
+      <!-- UPDATED: This is the visible container where the typing effect will happen -->
+      <div id="response-display">
+        Welcome! How can I assist you today?
+      </div>
+
+      <!-- 
+        UPDATED: This hidden div holds the full response from your Python server.
+        The JavaScript will read from here.
+      -->
+      {% if response %}
+        <div id="full-response-data" style="display: none;">{{ response }}</div>
+      {% endif %}
+    </div>
+
+    <!-- The form still works exactly the same way -->
+    <form class="chat-form" method="POST" action="/">
+      <input class="chat-input" type="text" name="question" placeholder="Ask me anything..." required autocomplete="off" />
+      <button class="send-button" type="submit">Send</button>
+    </form>
+
+    <footer>
+      Powered by Bug🐞Busters
+    </footer>
+  </div>
+
+  <!-- UPDATED: The new JavaScript for the typewriter effect -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fullResponseHolder = document.getElementById('full-response-data');
+      const responseDisplay = document.getElementById('response-display');
+
+      // This function will create the typing effect
+      function typeWriter(element, text, speed) {
+        let i = 0;
+        element.innerHTML = ''; // Clear the display area first
+        const cursor = '<span class="typing-cursor"></span>';
+        element.insertAdjacentHTML('beforeend', cursor);
+        const cursorElement = element.querySelector('.typing-cursor');
+
+        const typingInterval = setInterval(() => {
+          if (i < text.length) {
+            cursorElement.before(text.charAt(i));
+            i++;
+          } else {
+            clearInterval(typingInterval);
+            // Optional: remove cursor after typing is done
+            cursorElement.remove(); 
+          }
+        }, speed);
+      }
+
+      // Check if a response from the server exists in the hidden div
+      if (fullResponseHolder) {
+        const textToType = fullResponseHolder.textContent.trim();
+        // Start the typewriter effect
+        typeWriter(responseDisplay, textToType, 40); // 40ms per character for a fast type
+      }
+    });
+  </script>
+
+</body>
+</html>
