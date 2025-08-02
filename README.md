@@ -1,96 +1,69 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# NO-sense chat  🎯
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: Bug_busters
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: Shveta Maria Teresa M.S - AISAT
+- Member 2: Ann Treesa Jose - AISAT
 
 ### Project Description
-[2-3 lines about what your project does]
+Our project is about a chat where it replies non related answers to the questions we ask (eg. we ask , how are you? and it will respond like , i need my mouse enegry to answer that question, btw what was the question?), our program is responsive and its made using python flask, css, html and javascript.
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+it just sloves something randome that is of no use.
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+funny or sassy answers
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- python flask
+- html
+- css
+- javascript
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
 
 ### Implementation
 For Software:
 # Installation
-[commands]
+pip install flask
 
 # Run
-[commands]
+python app.py 
 
 ### Project Documentation
 For Software:
 
-# Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+# Screenshots 
+<img width="1080" height="210" alt="image" src="https://github.com/user-attachments/assets/bf6196bf-7037-4357-a120-216f2812189a" />
+run time code 
+it shows the run implementation , click the link code given 
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1235" height="797" alt="image" src="https://github.com/user-attachments/assets/3d073063-6f54-42a7-be70-1e361c292233" />
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+Uploading bugbusters demo video .mp4…
 
-# Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
 
-For Hardware:
+web page 
+this shows how the page is displayed when we run the program
 
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
+<img width="1021" height="734" alt="image" src="https://github.com/user-attachments/assets/edeeaa65-20f2-44c4-bcf6-970851089bf2" />
+the web page 2
+it shows how the web page works
 
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
 
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
-
-### Project Demo
-# Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
-
-# Additional Demos
-[Add any extra demo materials/links]
+#Video 
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
+- Shveta: base of program , ideas and codes
+- Ann: helping hand , gave ideas and feedbacks
 
 ---
 Made with ❤️ at TinkerHub Useless Projects 
